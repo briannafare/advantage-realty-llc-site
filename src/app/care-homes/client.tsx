@@ -59,7 +59,7 @@ export function CareHomesPageClient() {
         <div className="container-site max-w-3xl">
           <FadeIn><h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">What Care Home Investing Looks Like in Oregon</h2>
             <p className="text-muted leading-relaxed mb-6">Adult care homes are residential properties licensed to provide care services for adults who need assistance with daily living. In Oregon, these facilities are regulated by the Department of Human Services and must meet specific property and operational requirements.</p>
-            <p className="text-muted leading-relaxed mb-6">The opportunity is significant: Oregon&apos;s aging population is growing, and demand for quality care facilities consistently outpaces supply. For investors, this means strong occupancy rates and rental income that can significantly exceed traditional residential returns.</p>
+            <p className="text-muted leading-relaxed mb-6">The opportunity is significant: Oregon&apos;s aging population is growing, and demand for quality care facilities consistently outpaces supply. According to the <span className="font-semibold text-foreground">Oregon Department of Human Services</span>, the state&apos;s 65+ population is projected to grow by 59% by 2050 &mdash; from roughly 807,000 to over 1.28 million residents. The Oregon Office of Economic Analysis forecasts elderly population growth at 1.6% annually through 2035, more than three times the rate of the overall population. For investors, this means strong occupancy rates and rental income that can significantly exceed traditional residential returns.</p>
           </FadeIn>
         </div>
       </section>

@@ -52,6 +52,14 @@ export function InvestPageClient() {
         </div>
       </section>
 
+      <section className="py-10 bg-surface-alt border-y border-border">
+        <div className="container-site">
+          <FadeIn className="text-center">
+            <p className="text-sm text-muted max-w-2xl mx-auto">According to <span className="font-semibold text-foreground">NAR&apos;s 2025 Profile</span>, 26% of all home buyers paid cash &mdash; a continuing all-time high. Repeat buyers and investors are dominating the market, making expert guidance critical for finding deals before they go under contract.</p>
+          </FadeIn>
+        </div>
+      </section>
+
       <section className="py-16 md:py-20 bg-primary relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
         <div className="container-site relative z-10 text-center">

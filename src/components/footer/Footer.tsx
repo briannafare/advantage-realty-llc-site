@@ -77,8 +77,12 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-white/40">&copy; {new Date().getFullYear()} Advantage Realty LLC. All rights reserved. Equal Housing Opportunity.</p>
-          <div className="flex items-center gap-4 text-xs text-white/40">
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-xs text-white/40">
             <span>Oregon Licensed Real Estate Brokerage</span>
+            <span className="hidden md:inline">&bull;</span>
+            <span>Principal Broker: Huluka Abebe</span>
+            <span className="hidden md:inline">&bull;</span>
+            <span>13100 SE Sunnyside Rd, Suite B, Clackamas, OR 97015</span>
           </div>
         </div>
       </div>

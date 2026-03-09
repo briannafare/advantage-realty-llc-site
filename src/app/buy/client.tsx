@@ -72,6 +72,15 @@ export function BuyPageClient() {
         </div>
       </section>
 
+      {/* INDUSTRY STAT */}
+      <section className="py-10 bg-white border-b border-border">
+        <div className="container-site">
+          <FadeIn className="text-center">
+            <p className="text-sm text-muted max-w-2xl mx-auto">According to the <span className="font-semibold text-foreground">2025 NAR Profile of Home Buyers and Sellers</span>, 88% of buyers purchased through a real estate agent &mdash; and the median age of first-time buyers hit 40 for the first time ever. Having the right guide matters more than it used to.</p>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* PAIN POINTS */}
       <section className="section-padding bg-surface-alt">
         <div className="container-site">

@@ -15,8 +15,8 @@ const config: Config = {
         border: '#E5E1DA',
       },
       fontFamily: {
-        heading: ["'Playfair Display'", 'Georgia', 'serif'],
-        body: ["'DM Sans'", "'Helvetica Neue'", 'Arial', 'sans-serif'],
+        heading: ['var(--font-heading)', 'Georgia', 'serif'],
+        body: ['var(--font-body)', "'Helvetica Neue'", 'Arial', 'sans-serif'],
       },
       borderRadius: {
         '2xl': '16px',
