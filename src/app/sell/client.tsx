@@ -76,6 +76,15 @@ export function SellPageClient() {
         </div>
       </section>
 
+      {/* INDUSTRY STAT */}
+      <section className="py-10 bg-surface-alt border-y border-border">
+        <div className="container-site">
+          <FadeIn className="text-center">
+            <p className="text-sm text-muted max-w-2xl mx-auto">According to the <span className="font-semibold text-foreground">2025 NAR Profile</span>, 91% of sellers used a real estate agent &mdash; a record high &mdash; while for-sale-by-owner transactions dropped to just 5%, the lowest share ever recorded. Sellers who listed with an agent typically sold for 99% of their asking price.</p>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* PROPERTY EVALUATION FORM */}
       <section id="evaluation" className="section-padding bg-surface-alt">
         <div className="container-site">

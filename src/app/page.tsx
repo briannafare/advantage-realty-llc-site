@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
-import { Home, TrendingUp, BarChart2, ShieldCheck, Star, Calendar, Globe, Heart, Users, ArrowRight, ChevronDown, Phone, Mail, MapPin, Quote } from 'lucide-react';
+import { Home, TrendingUp, BarChart2, ShieldCheck, Star, Calendar, Globe, Heart, Users, ArrowRight, ChevronDown, ChevronLeft, ChevronRight, Phone, Mail, MapPin, Quote } from 'lucide-react';
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/sections/Animate';
 import { siteConfig, services, testimonials, homeFaqs, trustStats, processSteps, whyAdvantage, serviceAreas } from '@/lib/data';
 
@@ -55,17 +55,80 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
+/* ──────────────────── TESTIMONIAL CAROUSEL ──────────────────── */
+function TestimonialCarousel() {
+  const [active, setActive] = useState(0);
+  const len = testimonials.length;
+  const next = () => setActive((active + 1) % len);
+  const prev = () => setActive((active - 1 + len) % len);
+
+  useEffect(() => {
+    const timer = setInterval(next, 6000);
+    return () => clearInterval(timer);
+  }, [active]);
+
+  return (
+    <div className="relative max-w-3xl mx-auto">
+      <div className="overflow-hidden">
+        <motion.div
+          key={active}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -40 }}
+          transition={{ duration: 0.4 }}
+          className="bg-white rounded-2xl p-8 md:p-10 border border-border"
+        >
+          <Quote className="w-8 h-8 text-accent/30 mb-4" />
+          <p className="text-foreground text-lg leading-relaxed mb-6">&ldquo;{testimonials[active].text}&rdquo;</p>
+          <div className="flex items-center gap-3 pt-4 border-t border-border/50">
+            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+              <span className="text-sm font-bold text-primary">{testimonials[active].name.charAt(0)}</span>
+            </div>
+            <div>
+              <p className="font-semibold text-sm text-foreground">{testimonials[active].name}</p>
+              <p className="text-xs text-muted">{testimonials[active].context}</p>
+            </div>
+            <div className="ml-auto flex gap-0.5">
+              {[...Array(5)].map((_, j) => (
+                <Star key={j} className="w-3.5 h-3.5 text-accent fill-accent" />
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+      <div className="flex items-center justify-center gap-4 mt-6">
+        <button onClick={prev} className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-surface-alt transition-colors" aria-label="Previous testimonial">
+          <ChevronLeft className="w-5 h-5 text-muted" />
+        </button>
+        <div className="flex gap-2">
+          {testimonials.map((_, i) => (
+            <button key={i} onClick={() => setActive(i)} className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${i === active ? 'bg-accent w-6' : 'bg-border'}`} aria-label={`Go to testimonial ${i + 1}`} />
+          ))}
+        </div>
+        <button onClick={next} className="w-10 h-10 rounded-full border border-border flex items-center justify-center hover:bg-surface-alt transition-colors" aria-label="Next testimonial">
+          <ChevronRight className="w-5 h-5 text-muted" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
 /* ──────────────────── HOMEPAGE ──────────────────── */
 export default function HomePage() {
+  const heroRef = useRef(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
+  const blob1Y = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const blob2Y = useTransform(scrollYProgress, [0, 1], [0, -120]);
+
   return (
     <div className="pb-20 lg:pb-0">
       {/* ═══════ HERO ═══════ */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-[72px]">
+      <section ref={heroRef} className="relative min-h-[90vh] flex items-center overflow-hidden pt-[72px]">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-accent-light/60 via-background to-background" />
-        {/* Decorative shapes */}
-        <div className="absolute top-20 right-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        {/* Decorative shapes with parallax */}
+        <motion.div style={{ y: blob1Y }} className="absolute top-20 right-10 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
+        <motion.div style={{ y: blob2Y }} className="absolute bottom-10 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
 
         <div className="container-site relative z-10 py-12 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -219,36 +282,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════ TESTIMONIALS ═══════ */}
+      {/* ═══════ TESTIMONIALS CAROUSEL ═══════ */}
       <section className="section-padding bg-surface-alt overflow-hidden">
         <div className="container-site">
           <FadeIn className="text-center mb-14">
             <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-4">What Our Clients Say</h2>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {testimonials.map((t, i) => (
-              <FadeIn key={i} delay={i * 0.12}>
-                <div className="bg-white rounded-2xl p-8 border border-border h-full flex flex-col">
-                  <Quote className="w-8 h-8 text-accent/30 mb-4 flex-shrink-0" />
-                  <p className="text-foreground leading-relaxed mb-6 flex-1">&ldquo;{t.text}&rdquo;</p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-border/50">
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="text-sm font-bold text-primary">{t.name.charAt(0)}</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-sm text-foreground">{t.name}</p>
-                      <p className="text-xs text-muted">{t.context}</p>
-                    </div>
-                    <div className="ml-auto flex gap-0.5">
-                      {[...Array(5)].map((_, j) => (
-                        <Star key={j} className="w-3.5 h-3.5 text-accent fill-accent" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+          <FadeIn delay={0.1}>
+            <TestimonialCarousel />
+          </FadeIn>
         </div>
       </section>
 

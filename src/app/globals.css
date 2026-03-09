@@ -24,13 +24,13 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'DM Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: var(--font-body), 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', Georgia, serif;
+  font-family: var(--font-heading), Georgia, serif;
 }
 
 @layer components {
