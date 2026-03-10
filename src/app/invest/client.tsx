@@ -1,50 +1,57 @@
 'use client';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Building, ShieldCheck, Repeat, ArrowRight, Phone, Quote, Star } from 'lucide-react';
+import { ArrowRight, Phone, Star, Quote } from 'lucide-react';
 import { FadeIn, StaggerContainer, StaggerItem } from '@/components/sections/Animate';
 import { siteConfig, testimonials, team } from '@/lib/data';
+import { ShieldCheckIcon, ChartUpIcon } from '@/components/svg/Illustrations';
 
 export function InvestPageClient() {
-  const investTestimonials = [testimonials[2], testimonials[3]];
   return (
     <div className="pb-20 lg:pb-0">
-      <section className="relative pt-[72px] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-background" />
+      <section className="relative pt-[72px] bg-primary overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")" }} />
         <div className="container-site relative z-10 py-16 md:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <FadeIn>
-              <h1 className="font-heading text-4xl md:text-5xl leading-[1.1] text-foreground mb-6">Portland Real Estate Investment <span className="text-primary">&mdash; Rentals, Care Homes, and 1031 Exchanges</span></h1>
-              <p className="text-lg text-muted mb-8 leading-relaxed max-w-xl">We help investors find properties that cash flow, appreciate, and meet their financial goals.</p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact" className="btn-primary">Get the Investment Checklist <ArrowRight className="w-4 h-4" /></Link>
-                <Link href="/contact" className="btn-secondary">Schedule a Consultation</Link>
+              <p className="text-accent text-sm font-semibold tracking-wide uppercase mb-4">Investor Services</p>
+              <h1 className="font-heading text-4xl md:text-5xl leading-[1.05] text-white mb-6 font-medium">Portland real estate investment <span className="text-accent">&mdash; rentals, care homes &amp; 1031 exchanges</span></h1>
+              <p className="text-white/60 text-lg mb-8 leading-relaxed max-w-xl">We help investors find properties that cash flow, appreciate, and meet long-term financial goals.</p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link href="/contact" className="btn-on-dark">Get the Investment Checklist <ArrowRight className="w-4 h-4" /></Link>
+                <Link href="/contact" className="btn-ghost-light">Schedule a Consultation</Link>
               </div>
             </FadeIn>
             <FadeIn delay={0.2} direction="right">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video">
-                <Image src="/images/generated/invest-hero-portland.png" alt="Portland Oregon skyline with Mt Hood" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video">
+                <Image src="/images/generated/invest-hero-portland.png" alt="Portland Oregon skyline" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-white">
+      <section className="py-8 bg-white border-b border-border/60">
+        <div className="container-site text-center">
+          <FadeIn><p className="text-sm text-muted max-w-2xl mx-auto">According to <strong className="text-foreground">NAR&apos;s 2025 Profile</strong>, 26% of all buyers paid cash — a continuing all-time high. Investors are dominating the market, making expert guidance critical for finding deals before they go under contract.</p></FadeIn>
+        </div>
+      </section>
+
+      <section className="section-y bg-cream">
         <div className="container-site">
-          <FadeIn className="text-center mb-14"><h2 className="font-heading text-3xl md:text-4xl text-foreground">Investment Strategies We Specialize In</h2></FadeIn>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <FadeIn className="mb-12"><p className="text-accent text-sm font-semibold tracking-wide uppercase mb-3">Our Specialties</p><h2 className="font-heading text-3xl md:text-[2.5rem] text-foreground leading-tight">Investment strategies we deliver</h2></FadeIn>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { icon: Building, title: 'Rental Properties', desc: 'Single-family, duplex, and multi-family properties in Portland metro. We analyze cap rates, rental demand, and appreciation trends.', highlight: false },
-              { icon: ShieldCheck, title: 'Care Home Facilities', desc: "Our unique specialty. We find properties that meet Oregon's care home requirements and ADA compliance standards.", highlight: true },
-              { icon: Repeat, title: '1031 Exchanges', desc: 'Grow your portfolio tax-free. Our team helps you identify qualifying replacement properties and execute exchanges seamlessly.', highlight: false },
-            ].map((s) => (
-              <StaggerItem key={s.title}>
-                <div className={`bg-white rounded-2xl p-8 border h-full ${s.highlight ? 'border-accent shadow-lg' : 'border-border'}`}>
-                  <s.icon className="w-8 h-8 text-accent mb-4" />
-                  <h3 className="font-heading text-xl text-foreground mb-3">{s.title}</h3>
-                  <p className="text-muted text-sm leading-relaxed">{s.desc}</p>
-                  {s.highlight && <Link href="/care-homes" className="inline-flex items-center gap-1 text-sm font-semibold text-accent mt-4 hover:text-accent-hover transition-colors">Learn More <ArrowRight className="w-3.5 h-3.5" /></Link>}
+              { t: 'Rental Properties', d: 'Single-family, duplex, and multi-family in Portland metro. We analyze cap rates, demand, and appreciation.', highlight: false },
+              { t: 'Care Home Facilities', d: "Our unique niche. ADA-compliant properties for adult care. We know Oregon's requirements cold.", highlight: true, link: '/care-homes' },
+              { t: '1031 Exchanges', d: 'Grow your portfolio tax-free. Jenni Anderson leads our exchange services with deep experience.', highlight: false },
+            ].map(s => (
+              <StaggerItem key={s.t}>
+                <div className={`bg-white rounded-2xl p-7 border h-full ${s.highlight ? 'border-accent/40 shadow-md' : 'border-border/50'}`}>
+                  <div className="text-accent mb-4">{s.highlight ? <ShieldCheckIcon className="w-10 h-10" /> : <ChartUpIcon className="w-10 h-10" />}</div>
+                  <h3 className="font-heading text-xl text-foreground mb-2">{s.t}</h3>
+                  <p className="text-muted text-[15px] leading-relaxed mb-3">{s.d}</p>
+                  {s.link && <Link href={s.link} className="text-accent text-sm font-semibold flex items-center gap-1 hover:gap-2 transition-all">Learn more <ArrowRight className="w-3.5 h-3.5" /></Link>}
                 </div>
               </StaggerItem>
             ))}
@@ -52,59 +59,38 @@ export function InvestPageClient() {
         </div>
       </section>
 
-      <section className="py-10 bg-surface-alt border-y border-border">
+      <section className="section-y bg-white">
         <div className="container-site">
-          <FadeIn className="text-center">
-            <p className="text-sm text-muted max-w-2xl mx-auto">According to <span className="font-semibold text-foreground">NAR&apos;s 2025 Profile</span>, 26% of all home buyers paid cash &mdash; a continuing all-time high. Repeat buyers and investors are dominating the market, making expert guidance critical for finding deals before they go under contract.</p>
-          </FadeIn>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20 bg-primary relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
-        <div className="container-site relative z-10 text-center">
-          <FadeIn>
-            <h2 className="font-heading text-3xl md:text-4xl text-white mb-4">Portland&apos;s Care Home Investment Specialists</h2>
-            <p className="text-white/70 max-w-xl mx-auto mb-8">Adult care facilities are one of Oregon&apos;s fastest-growing real estate niches. We&apos;re the only brokerage with dedicated care home expertise.</p>
-            <Link href="/care-homes" className="btn-on-dark">Learn About Care Home Investing <ArrowRight className="w-4 h-4" /></Link>
-          </FadeIn>
-        </div>
-      </section>
-
-      <section className="section-padding bg-surface-alt">
-        <div className="container-site">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <FadeIn>
-              <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-4">Grow Your Portfolio Tax-Free With 1031 Exchanges</h2>
-              <p className="text-muted leading-relaxed mb-4">A 1031 Exchange lets you defer capital gains taxes by reinvesting proceeds from a property sale into a new qualifying property. It&apos;s one of the most powerful wealth-building tools in real estate.</p>
-              <p className="text-muted leading-relaxed mb-6">Jenni Anderson leads our 1031 Exchange services with deep experience in tax-deferred exchanges.</p>
+              <p className="text-accent text-sm font-semibold tracking-wide uppercase mb-3">1031 Exchange</p>
+              <h2 className="font-heading text-3xl md:text-[2.5rem] text-foreground leading-tight mb-4">Grow your portfolio tax-free</h2>
+              <p className="text-muted leading-relaxed mb-4">A 1031 Exchange lets you defer capital gains taxes by reinvesting sale proceeds into qualifying replacement property. It is one of the most powerful wealth-building tools in real estate.</p>
+              <p className="text-muted leading-relaxed mb-6">Jenni Anderson leads our 1031 Exchange services.</p>
               <Link href="/contact" className="btn-primary">Schedule a 1031 Consultation <ArrowRight className="w-4 h-4" /></Link>
             </FadeIn>
-            <FadeIn delay={0.2} direction="right">
-              <div className="bg-white rounded-2xl p-8 border border-border">
-                <Image src={team[2].image} alt={team[2].name} width={300} height={400} className="rounded-xl object-cover object-top w-full h-64 mb-4" />
+            <FadeIn delay={0.15} direction="right">
+              <div className="bg-cream rounded-2xl p-6 border border-border/50">
+                <Image src={team[2].image} alt={team[2].name} width={400} height={500} className="rounded-xl object-cover object-top w-full h-72 mb-4" />
                 <h3 className="font-heading text-xl text-foreground">{team[2].name}</h3>
-                <p className="text-muted text-sm">{team[2].role}</p>
-                <a href={`tel:${team[2].phone.replace(/[^0-9]/g, '')}`} className="flex items-center gap-1 text-sm text-accent mt-2"><Phone className="w-3.5 h-3.5" />{team[2].phone}</a>
+                <p className="text-accent text-sm font-medium">{team[2].role}</p>
+                <a href={`tel:${team[2].phone.replace(/\D/g,'')}`} className="flex items-center gap-1 text-sm text-muted hover:text-accent mt-2 transition-colors"><Phone className="w-3.5 h-3.5" />{team[2].phone}</a>
               </div>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-white">
-        <div className="container-site">
-          <FadeIn className="text-center mb-14"><h2 className="font-heading text-3xl md:text-4xl text-foreground">From Our Investors</h2></FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-            {investTestimonials.map((t, i) => (
+      <section className="section-y bg-cream">
+        <div className="container-site max-w-3xl">
+          <FadeIn className="mb-10"><h2 className="font-heading text-3xl md:text-[2.5rem] text-foreground text-center">From our investors</h2></FadeIn>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {[testimonials[2], testimonials[3]].map((t, i) => (
               <FadeIn key={i} delay={i * 0.1}>
-                <div className="bg-surface-alt rounded-2xl p-6 border border-border h-full flex flex-col">
-                  <Quote className="w-6 h-6 text-accent/30 mb-3" />
-                  <p className="text-foreground text-sm leading-relaxed mb-4 flex-1">&ldquo;{t.text}&rdquo;</p>
-                  <div className="flex items-center gap-2 pt-3 border-t border-border/50">
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center"><span className="text-xs font-bold text-primary">{t.name.charAt(0)}</span></div>
-                    <div><p className="font-semibold text-xs">{t.name}</p><p className="text-xs text-muted">{t.context}</p></div>
-                  </div>
+                <div className="bg-white rounded-2xl p-6 border border-border/50 h-full">
+                  <div className="flex gap-0.5 mb-3">{[...Array(5)].map((_, j) => <Star key={j} className="w-3.5 h-3.5 text-accent fill-accent" />)}</div>
+                  <p className="text-foreground text-sm leading-relaxed italic mb-4">&ldquo;{t.text}&rdquo;</p>
+                  <p className="font-semibold text-xs">{t.name} <span className="text-muted font-normal">&middot; {t.context}</span></p>
                 </div>
               </FadeIn>
             ))}
@@ -112,13 +98,13 @@ export function InvestPageClient() {
         </div>
       </section>
 
-      <section className="py-16 md:py-20 bg-primary">
+      <section className="py-20 md:py-24 bg-primary">
         <div className="container-site text-center">
           <FadeIn>
-            <h2 className="font-heading text-3xl md:text-4xl text-white mb-6">Ready to Invest?</h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <h2 className="font-heading text-3xl md:text-4xl text-white mb-6 font-medium">Ready to invest?</h2>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/contact" className="btn-on-dark">Schedule a Free Consultation <ArrowRight className="w-4 h-4" /></Link>
-              <a href={`tel:${siteConfig.phone.replace(/[^0-9]/g, '')}`} className="inline-flex items-center justify-center gap-2 rounded-full border-2 border-white/30 px-8 py-3.5 font-semibold text-white hover:bg-white/10 transition-all"><Phone className="w-4 h-4" />{siteConfig.phone}</a>
+              <a href={`tel:${siteConfig.phone.replace(/\D/g,'')}`} className="btn-ghost-light"><Phone className="w-4 h-4" />{siteConfig.phone}</a>
             </div>
           </FadeIn>
         </div>
