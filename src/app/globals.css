@@ -3,54 +3,52 @@
 @tailwind utilities;
 
 :root {
-  --primary: #1E3A5F;
-  --primary-light: #2D5A8E;
-  --secondary: #3B82C4;
-  --accent: #D4915C;
-  --accent-hover: #C07A45;
-  --accent-light: #F5E6D8;
-  --background: #FAFAF7;
-  --surface: #FFFFFF;
-  --surface-alt: #F5F2ED;
-  --foreground: #1C1C1C;
-  --muted: #5A6577;
-  --border: #E5E1DA;
+  --primary: #0C1B2A;
+  --primary-light: #162D45;
+  --accent: #C17B4A;
+  --accent-hover: #A8663A;
+  --accent-light: #F5EDE5;
+  --cream: #FAF7F2;
+  --cream-dark: #F0EBE3;
+  --foreground: #1C1917;
+  --muted: #6B7280;
+  --border: #E5E1D8;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-body), 'Helvetica Neue', Arial, sans-serif;
+  background: var(--cream);
+  font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading), Georgia, serif;
-}
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-heading), Georgia, serif; }
+
+::selection { background: #C17B4A; color: white; }
 
 @layer components {
-  .section-padding {
-    @apply py-16 md:py-24 lg:py-28;
-  }
-  .container-site {
-    @apply max-w-site mx-auto px-5 md:px-8;
-  }
+  .section-y { @apply py-20 md:py-28; }
+  .container-site { @apply max-w-site mx-auto px-5 md:px-8; }
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-3.5 font-body font-semibold text-white
-    shadow-[0_4px_14px_rgba(212,145,92,0.3)] transition-all duration-300
-    hover:bg-accent-hover hover:shadow-[0_6px_20px_rgba(212,145,92,0.4)] hover:-translate-y-0.5;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5
+    font-body font-semibold text-white text-[15px]
+    transition-all duration-300 hover:bg-accent-hover hover:shadow-lg hover:-translate-y-0.5;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-primary px-8 py-3 font-body font-semibold text-primary
-    transition-all duration-300 hover:bg-primary hover:text-white;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border-2 border-primary/20
+    px-7 py-3 font-body font-semibold text-primary text-[15px]
+    transition-all duration-300 hover:border-primary hover:bg-primary hover:text-white;
   }
   .btn-on-dark {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-accent px-8 py-3.5 font-body font-semibold text-white
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5
+    font-body font-semibold text-white text-[15px]
     transition-all duration-300 hover:bg-white hover:text-primary;
+  }
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-white/20
+    px-7 py-3 font-body font-medium text-white/90 text-[15px]
+    transition-all duration-300 hover:bg-white/10 hover:border-white/40;
   }
 }

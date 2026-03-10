@@ -5,25 +5,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: { DEFAULT: '#1E3A5F', light: '#2D5A8E' },
-        secondary: '#3B82C4',
-        accent: { DEFAULT: '#D4915C', hover: '#C07A45', light: '#F5E6D8' },
-        background: '#FAFAF7',
-        surface: { DEFAULT: '#FFFFFF', alt: '#F5F2ED' },
-        foreground: '#1C1C1C',
-        muted: '#5A6577',
-        border: '#E5E1DA',
+        primary: { DEFAULT: '#0C1B2A', light: '#162D45' },
+        accent: { DEFAULT: '#C17B4A', hover: '#A8663A', light: '#F5EDE5', dark: '#8B5A35' },
+        cream: { DEFAULT: '#FAF7F2', dark: '#F0EBE3' },
+        slate: { 750: '#293548' },
+        foreground: '#1C1917',
+        muted: '#6B7280',
+        border: '#E5E1D8',
+        surface: { DEFAULT: '#FFFFFF', alt: '#F7F4EE' },
       },
       fontFamily: {
         heading: ['var(--font-heading)', 'Georgia', 'serif'],
-        body: ['var(--font-body)', "'Helvetica Neue'", 'Arial', 'sans-serif'],
-      },
-      borderRadius: {
-        '2xl': '16px',
-        '3xl': '20px',
+        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
       maxWidth: {
-        site: '1240px',
+        site: '1280px',
+      },
+      backgroundImage: {
+        'grain': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")",
       },
     },
   },
