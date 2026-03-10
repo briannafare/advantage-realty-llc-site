@@ -5,25 +5,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: { DEFAULT: '#0C1B2A', light: '#162D45' },
-        accent: { DEFAULT: '#C17B4A', hover: '#A8663A', light: '#F5EDE5', dark: '#8B5A35' },
-        cream: { DEFAULT: '#FAF7F2', dark: '#F0EBE3' },
-        slate: { 750: '#293548' },
-        foreground: '#1C1917',
+        sage: { 50: '#F4F8F6', 100: '#E1EDE7', 200: '#C3DBD0', 300: '#8FBDAB', 400: '#5A9A82', DEFAULT: '#3D6B5E', 600: '#2F5349', 700: '#264139', 800: '#1E332D' },
+        coral: { 50: '#FEF6F3', 100: '#FDE8E0', 200: '#FACFC1', DEFAULT: '#E8795A', 400: '#D9603D', 500: '#C04A2A' },
+        fg: '#1F2937',
         muted: '#6B7280',
-        border: '#E5E1D8',
-        surface: { DEFAULT: '#FFFFFF', alt: '#F7F4EE' },
+        border: '#E5E7EB',
       },
       fontFamily: {
-        heading: ['var(--font-heading)', 'Georgia', 'serif'],
+        heading: ['var(--font-heading)', 'system-ui', 'sans-serif'],
         body: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
-      maxWidth: {
-        site: '1280px',
-      },
-      backgroundImage: {
-        'grain': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")",
-      },
+      maxWidth: { site: '1240px' },
+      borderRadius: { '2xl': '16px', '3xl': '24px', '4xl': '32px' },
     },
   },
   plugins: [],
