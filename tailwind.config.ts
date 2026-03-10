@@ -1,22 +1,21 @@
 import type { Config } from 'tailwindcss';
-
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
-        sage: { 50: '#F4F8F6', 100: '#E1EDE7', 200: '#C3DBD0', 300: '#8FBDAB', 400: '#5A9A82', DEFAULT: '#3D6B5E', 600: '#2F5349', 700: '#264139', 800: '#1E332D' },
-        coral: { 50: '#FEF6F3', 100: '#FDE8E0', 200: '#FACFC1', DEFAULT: '#E8795A', 400: '#D9603D', 500: '#C04A2A' },
-        fg: '#1F2937',
-        muted: '#6B7280',
-        border: '#E5E7EB',
+        sienna: { 50: '#FDF5EF', 100: '#FAE8D8', 200: '#F4CCB0', DEFAULT: '#C2571A', 600: '#A34815', 700: '#7D3710' },
+        forest: { 50: '#F0F7F3', 100: '#D4E9DC', 200: '#A8D3B9', DEFAULT: '#3B7A57', 600: '#2F6247', 700: '#244A35' },
+        warm: { 50: '#FFFCF9', 100: '#F5F0EA', 200: '#EBE4DA', 300: '#E5DDD4', 800: '#2A2520' },
+        fg: '#2A2520',
+        muted: '#8A7F76',
+        border: '#E5DDD4',
       },
       fontFamily: {
         heading: ['var(--font-heading)', 'system-ui', 'sans-serif'],
         body: ['var(--font-body)', 'system-ui', 'sans-serif'],
       },
-      maxWidth: { site: '1240px' },
-      borderRadius: { '2xl': '16px', '3xl': '24px', '4xl': '32px' },
+      maxWidth: { site: '1220px' },
     },
   },
   plugins: [],
